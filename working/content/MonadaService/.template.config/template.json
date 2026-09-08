@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Mr. SMIT",
+    "classifications": [
+        "Web",
+        "Clean Architecture",
+        "API",
+        "Microservice"
+    ],
+    "identity": "Monada.Service.Template",
+    "name": "Monada Service - Clean Architecture",
+    "description": "Reusable Clean Architecture microservice template with API, Application, Domain and Infrastructure layers.",
+    "shortName": "monada-service",
+    "sourceName": "MonadaService",
+    "preferNameDirectory": true,
+    "tags": {
+        "language": "C#",
+        "type": "project"
+    }
+}

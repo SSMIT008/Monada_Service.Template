@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Monada Service Template - a reusable .NET 10 Clean Architecture foundation by Mr.SMIT." />
+    <title>Monada Service Template - Mr.SMIT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="hero">
+        <nav class="nav">
+            <div class="shell">
+                <div class="brand">Mr.S.M.<b>I.T.</b> - Monada</div>
+                <div class="nav-links">
+                    <a href="#quick-start">Quick Start</a>
+                    <a href="#architecture">Architecture</a>
+                    <a href="#workflow">Publishing</a>
+                    <a href="#principles">Principles</a>
+                </div>
+            </div>
+        </nav>
+        <div class="shell hero-content">
+            <div class="eyebrow">Reusable .NET 10 Foundation</div>
+            <h1>Monada <span class="accent-word">Service</span> Template</h1>
+            <p>A Clean Architecture starter that turns repeatable setup into a single command: API, Application, Domain, Infrastructure, Swagger, Dependency Injection, HTTPS-first local development and automated package publishing.</p>
+            <div class="actions">
+                <a class="btn btn-primary" href="https://github.com/SSMIT008/Monada_Service.Template">View Repository</a>
+                <a class="btn btn-secondary" href="#quick-start">Install & Create</a>
+            </div>
+            <div class="stats">
+                <div class="stat"><strong>.NET 10</strong><span>Target framework</span></div>
+                <div class="stat"><strong>4</strong><span>Clean Architecture layers</span></div>
+                <div class="stat"><strong>1 command</strong><span>to generate a service</span></div>
+                <div class="stat"><strong>MIT</strong><span>Open-source license</span></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="wasabi" id="architecture">
+        <div class="shell">
+            <div class="section-kicker">Architecture</div>
+            <h2>A repeatable foundation, not repeatable boilerplate.</h2>
+            <p class="lead">Every generated service begins with the same explicit dependency model. Domain remains independent. Technical concerns live outside the core.</p>
+            <div class="grid-4 architecture" style="margin-top:32px">
+                <div class="card"><strong>API</strong>
+                    <p>HTTP surface, Swagger, Startup and composition root.</p>
+                    <div class="dependency">Depends on Application & Infrastructure</div>
+                </div>
+                <div class="card"><strong>Application</strong>
+                    <p>Use cases, orchestration, validation and application behavior.</p>
+                    <div class="dependency">Depends on Domain</div>
+                </div>
+                <div class="card"><strong>Domain</strong>
+                    <p>Entities, value objects, domain rules and core abstractions.</p>
+                    <div class="dependency">Depends on nothing</div>
+                </div>
+                <div class="card"><strong>Infrastructure</strong>
+                    <p>Persistence, repositories, integrations and technical implementations.</p>
+                    <div class="dependency">Depends on Application & Domain</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="paper" id="quick-start">
+        <div class="shell">
+            <div class="section-kicker">Quick Start</div>
+            <h2>From package to running service.</h2>
+            <div class="steps">
+                <div class="step">
+                    <div>
+                        <h3>Add GitHub Packages</h3>
+                        <p>Create a PAT with <code>read:packages</code>, keep it out of source control, and register the package feed.</p>
+                        <pre><button class="copy">Copy</button><code>$env:GITHUB_PACKAGES_TOKEN = "YOUR_PERSONAL_ACCESS_TOKEN"
+    dotnet nuget add source "https://nuget.pkg.github.com/SSMIT008/index.json" `
+    --name github-ssmit008 `
+    --username SSMIT008 `
+    --password $env:GITHUB_PACKAGES_TOKEN</code></pre>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Install the template</h3>
+                        <pre><button class="copy">Copy</button><code>dotnet new install Monada.Service.Template@1.0.0 `
+    --nuget-source "https://nuget.pkg.github.com/SSMIT008/index.json"</code></pre>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Create a service</h3>
+                        <pre><button class="copy">Copy</button><code>dotnet new monada-service -n Monada.Realtime</code></pre>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <h3>Build and run</h3>
+                        <pre><button class="copy">Copy</button><code>cd Monada.Realtime
+
+dotnet restore
+dotnet build
+dotnet watch --no-hot-reload</code></pre>
+                        <p><b>Swagger UI: <span class="accent-word"><code>https://localhost:8000/swagger</code></span></b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="persimmon">
+        <div class="shell">
+            <div class="section-kicker">Generated Experience</div>
+            <h2>One command. A clean service ready for real work.</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Generated structure</h3>
+                    <pre><code>Monada.Realtime/
+├── readme.md
+├── Monada.Realtime.API/
+├── Monada.Realtime.Application/
+├── Monada.Realtime.Domain/
+└── Monada.Realtime.Infrastructure/</code></pre>
+                </div>
+                <div class="card">
+                    <h3>Included baseline</h3>
+                    <p>.NET 10 - project references - DI extension methods - Global Usings - Swagger/OpenAPI - HTTPS-first launch profile - Documentation - Package metadata - MIT license - GitHub Actions publishing.</p>
+                    <p>The same template can generate Monada services or completely unrelated .NET services when this architecture fits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="plum" id="workflow">
+        <div class="shell">
+            <div class="section-kicker">CI/CD</div>
+            <h2>Versioned publishing through Git tags.</h2>
+            <p class="lead">The release workflow derives the NuGet version from a tag, builds the package in Release mode and publishes it to GitHub Packages.</p>
+            <div class="grid-2" style="margin-top:30px">
+                <div class="card">
+                    <h3>Release</h3>
+                    <pre><button class="copy">Copy</button><code>git status
+git add .
+git commit -m "Improve Monada service template"
+git push origin main
+
+git tag v1.1.0
+git push origin v1.1.0</code></pre>
+                </div>
+                <div class="card">
+                    <h3>Workflow result</h3>
+                    <p><strong>v1.1.0</strong> becomes package version <strong>1.1.0</strong>.</p>
+                    <p>The pipeline checks out the tagged source, configures .NET 10, packs the template and publishes the immutable package version.</p>
+                    <p>Verification: <strong>GitHub - Actions</strong> and <strong>GitHub - Packages</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wasabi" id="principles">
+        <div class="shell">
+            <div class="section-kicker">Engineering Philosophy</div>
+            <h2>Designed with intent.</h2>
+            <p class="principle">A template should make the <em>right path easier</em>, not make architecture automatic. Domain stays independent. Dependencies stay explicit. A new service exists only when its responsibility deserves a boundary.</p>
+            <div class="grid-2" style="margin-top:36px">
+                <div class="card">
+                    <h3>Build once, reuse deliberately.</h3>
+                    <p>Instead of recreating solution structure, references, Swagger and DI for every project, improve the foundation once and let future services inherit the standard.</p>
+                </div>
+                <div class="card">
+                    <h3>Perfect means intentional.</h3>
+                    <p>Not endless polishing. Understand why each piece exists, choose the cleanest reasonable solution, and build something worth reusing and shipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="paper">
+        <div class="shell">
+            <div class="section-kicker">Monada</div>
+            <h2>A tool born from a real product.</h2>
+            <p class="lead">The template was created while evolving Monada - <strong>"A hidden digital sanctuary composed of Rooms."</strong> It gives future services a shared foundation while letting the product roadmap decide when a separate boundary is actually valuable.</p>
+            <div class="grid-4" style="margin-top:30px">
+                <div class="card"><strong>Identity</strong>
+                    <p>Users, authentication and invitations when separation becomes valuable.</p>
+                </div>
+                <div class="card"><strong>Realtime</strong>
+                    <p>Live chat, radio, voice and streaming infrastructure.</p>
+                </div>
+                <div class="card"><strong>Media</strong>
+                    <p>Files, images, audio/video storage and processing.</p>
+                </div>
+                <div class="card"><strong>Notifications</strong>
+                    <p>Delivery, queues, retries and communication channels when needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="shell">
+            <div>Monada.Service.Template - .NET 10 - MIT</div>
+            <div>Created by Mr.SMIT - S.M.I.T. Studio</div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
